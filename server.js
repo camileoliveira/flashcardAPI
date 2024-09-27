@@ -4,6 +4,10 @@ const { arrFlashcards } = require("./arr");
 const app = express();
 const port = 3000;
 app.use(express.json());
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500).send("Something broke!")
+})
 const creatDeck = require("./creatDeck");
 const listDeck = require("./listDeck");
 const updateDeck = require("./updateDeck");
